@@ -25,3 +25,11 @@ set novisualbell
 set t_vb=
 set tm=500
 
+"Delete trailing white space in PHP files
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.php :call DeleteTrailingWS()
+
