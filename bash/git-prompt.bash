@@ -11,7 +11,7 @@ function parse_git_branch {
 function parse_git_stash {
   stash_list=`git stash list 2> /dev/null`
   if [ -n "$stash_list" ]; then
-    echo "!"
+    echo `git stash list | wc -l`
   fi
 }
 
