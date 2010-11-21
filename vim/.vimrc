@@ -25,11 +25,19 @@ set novisualbell
 set t_vb=
 set tm=500
 
-"Delete trailing white space in PHP files
+" Delete trailing white space in PHP files
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
 autocmd BufWrite *.php :call DeleteTrailingWS()
+
+" Highlight trailing whitespaces
+highlight TrailingWhitespace ctermbg=darkred ctermfg=white guibg=#990000
+match TrailingWhitespace / \+$/
+
+" Highlight characters after the 80 characters per line limit
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
 
